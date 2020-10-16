@@ -30,7 +30,7 @@ public class UserDetailServiceImpl implements UserDetailService {
             User user = userDaoMysql.getByUsername(s);
             if (user != null) {
                 Collection<GrantedAuthority> grantedAuthorities = new ArrayList<>(1);
-                grantedAuthorities.add(new SimpleGrantedAuthority("ADMIN"));
+                grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
                 user.setGrantedAuthorities(grantedAuthorities);
                 return user;
             }
