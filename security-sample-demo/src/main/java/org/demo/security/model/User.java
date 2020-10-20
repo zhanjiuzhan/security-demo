@@ -11,6 +11,7 @@ import java.util.Collection;
 public class User implements UserDetails {
 
     private String username;
+    private String role;
     private String password;
     private boolean isEnabled;
     Collection<? extends GrantedAuthority> grantedAuthorities;
@@ -62,6 +63,14 @@ public class User implements UserDetails {
         this.grantedAuthorities = grantedAuthorities;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     public void setAuthorities() {
 
     }
@@ -76,6 +85,19 @@ public class User implements UserDetails {
 
     public void setEnabled(boolean enabled) {
         isEnabled = enabled;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof User) {
+            return username.equals( ((User) obj).getUsername() );
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return username != null ? username.hashCode() : 0;
     }
 
     @Override

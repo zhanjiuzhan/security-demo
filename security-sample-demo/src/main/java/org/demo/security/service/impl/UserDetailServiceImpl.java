@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 
 
 /**
@@ -30,7 +29,8 @@ public class UserDetailServiceImpl implements UserDetailService {
             User user = userDaoMysql.getByUsername(s);
             if (user != null) {
                 Collection<GrantedAuthority> grantedAuthorities = new ArrayList<>(1);
-                grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+                // 至于为什么数据库中是ROLE_XXX 而设置角色的时候是XXX 这个是Security角色判定里面实现的
+                grantedAuthorities.add(new SimpleGrantedAuthority(user.getRole()));
                 user.setGrantedAuthorities(grantedAuthorities);
                 return user;
             }
