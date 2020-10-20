@@ -6,7 +6,7 @@ spring:
       roles:
         - ADMIN
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/sample_security?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    url: jdbc:mysql://127.0.0.1:3306/security_demo?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
     username: root
     password: root
     initialization-mode: always
