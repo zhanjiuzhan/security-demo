@@ -1,20 +1,2 @@
-spring:
-  security:
-    user:
-      name: root
-      password: abc123
-      roles:
-        - ADMIN
-  datasource:
-    url: jdbc:mysql://127.0.0.1:3306/security_demo?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
-    username: root
-    password: root
-    initialization-mode: always
-    schema:
-      - classpath:sql/user.sql
-    data:
-      - classpath:sql/userdata.sql
 server:
-  servlet:
-    session:
-      timeout: 300
+  port: 8088
