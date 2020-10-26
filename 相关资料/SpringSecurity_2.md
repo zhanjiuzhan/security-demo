@@ -1,13 +1,15 @@
 # Spring Security 启用 - @EnableWebSecurity
 ```java
+@Documented
 @Import({ WebSecurityConfiguration.class, SpringWebMvcImportSelector.class })
 @EnableGlobalAuthentication
 @Configuration
 public @interface EnableWebSecurity {
-    boolean debug() default false;
+
+	boolean debug() default false;
 }
 ```
-启用Security 主要就是引入了两个配置文件
+启用Security 主要就是引入了两个配置文件和 @EnableGlobalAuthentication 注解
 ## 1. WebSecurityConfiguration
 基本配置类 WebSecurityConfiguration 也作为Bean放入了容器中, Bean加载的时候会执行 setFilterChainProxySecurityConfigurer 方法
 ```java
@@ -56,5 +58,12 @@ public class WebSecurityConfiguration implements ImportAware, BeanClassLoaderAwa
 
 ## 2. SpringWebMvcImportSelector
 
+## 3. @EnableGlobalAuthentication
+```java
+@Import(AuthenticationConfiguration.class)
+@Configuration
+public @interface EnableGlobalAuthentication {}
+```
+引入 AuthenticationConfiguration 配置类, 字面意思它是一个全局的配置
 ##
 WebSecurityConfiguration, DelegatingApplicationListener

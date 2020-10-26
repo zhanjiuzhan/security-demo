@@ -18,11 +18,7 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http.authorizeRequests().antMatchers("/login").permitAll();
-        http.authorizeRequests().anyRequest().authenticated();
-
-        http.addFilter(new JwtAuthenticationFilter());
-
+        http.authorizeRequests().anyRequest().permitAll();
         http.csrf().disable();
     }
 
